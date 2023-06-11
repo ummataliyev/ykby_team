@@ -12,8 +12,8 @@ class Room(models.Model):
 
 class Booking(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    start_time = models.DateField(null=True)
-    end_time = models.DateField(null=True)
+    start_time = models.DateTimeField(null=True)
+    end_time = models.DateTimeField(null=True)
 
     def __str__(self):
         return f"Booking for room: {self.room}\n- Start time: {self.start_time}\n- End time: {self.end_time}" # noqa
