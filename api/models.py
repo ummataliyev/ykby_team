@@ -17,10 +17,10 @@ class Room(models.Model):
 
 
 class Booking(models.Model):
-    user = models.CharField(max_length=255)
+    resident = models.CharField(max_length=255)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
 
     def __str__(self):
-            return f"User: {self.user}, Room: {self.room}, Start Time: {self.start_time}, End Time: {self.end_time}" # noqa
+        return f"User: {self.resident}, Room: {self.room}, Start Time: {self.start_time}, End Time: {self.end_time}" # noqa

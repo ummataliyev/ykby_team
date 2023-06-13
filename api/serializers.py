@@ -10,8 +10,12 @@ class RoomSerializer(serializers.ModelSerializer):
 
 
 class BookingSerializer(serializers.ModelSerializer):
-    room = RoomSerializer()
+    serializers.PrimaryKeyRelatedField(queryset=Room.objects.all())
+    resident = serializers.CharField(source='resident.name')
+
+    start_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M')
+    end_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M')
 
     class Meta:
         model = Booking
-        fields = ['user', 'room', 'start_time', 'end_time']
+        fields = ['resident', 'room', 'start_time', 'end_time']
