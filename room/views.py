@@ -1,10 +1,11 @@
-from rest_framework import viewsets
+from rest_framework import generics
 from rest_framework.response import Response
-from rest_framework.filters import SearchFilter
 from rest_framework.pagination import PageNumberPagination
 
 from .models import Room
+from .models import Booking
 from .serializers import RoomSerializer
+from .serializers import BookingSerializer
 
 
 class CustomPagination(PageNumberPagination):
@@ -21,9 +22,22 @@ class CustomPagination(PageNumberPagination):
         })
 
 
-class RoomsViewSet(viewsets.ModelViewSet):
+class RoomListAPIView(generics.ListAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
-    filter_backends = [SearchFilter]
-    search_fields = ['name']
     pagination_class = CustomPagination
+
+
+class RoomDetailAPIView(generics.RetrieveAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+
+
+class RoomAvailabilityAPIView(generics.RetrieveAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+
+
+class BookingCreateAPIView(generics.CreateAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer

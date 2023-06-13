@@ -35,8 +35,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # local apps
-    'api',
-    'rooms',
+    'room',
 ]
 
 MIDDLEWARE = [
