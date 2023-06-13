@@ -1,5 +1,10 @@
 from django.urls import path
-from .views import RoomListAPIView, RoomDetailAPIView, RoomAvailabilityAPIView, BookingCreateAPIView
+
+from .views import RoomListAPIView
+from .views import RoomDetailAPIView
+from .views import BookingCreateAPIView
+from .views import RoomAvailabilityAPIView
+
 
 urlpatterns = [
     path('rooms', RoomListAPIView.as_view(), name='room-list'),
